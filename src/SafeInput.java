@@ -95,10 +95,8 @@ public class SafeInput {
         return input;
     }
 
-    public class GetUserName
-    {
-        public static void main(String[] args)
-        {
+    public static class GetUserName {
+        public static void main(String[] args) {
             Scanner in = new Scanner(System.in);
             String firstName = "";
             String lastName = "";
