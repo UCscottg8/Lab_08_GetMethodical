@@ -95,15 +95,47 @@ public class SafeInput {
         return input;
     }
 
-    public static class GetUserName {
-        public static void main(String[] args) {
-            Scanner in = new Scanner(System.in);
-            String firstName = "";
-            String lastName = "";
-            firstName = SafeInput.getNonZeroLenString(in, "Enter your first name");
-            lastName = SafeInput.getNonZeroLenString(in, "Enter your last name");
-            System.out.println("\nYour full name is: " + firstName + " " + lastName);
-        }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String firstName = "";
+        String lastName = "";
+        firstName = SafeInput.getNonZeroLenString(in, "Enter your first name");
+        lastName = SafeInput.getNonZeroLenString(in, "Enter your last name");
+        System.out.println("\nYour full name is: " + firstName + " " + lastName);
+
+        prettyHeader("Message Centered Here");
     }
 
+    public static void prettyHeader(String msg) {
+        final int LINE_WIDTH = 60;
+        int msgLength = msg.length();
+        int totalStars = 6; // 3 stars on each side of the message
+        int totalSpacing = LINE_WIDTH - (msgLength + totalStars);
+        int leftSpacing = totalSpacing / 2;
+        int rightSpacing = totalSpacing - leftSpacing;
+
+        printLine(LINE_WIDTH);
+        printMessageLine(msg, leftSpacing, rightSpacing);
+        printLine(LINE_WIDTH);
+    }
+
+    public static void printLine(int length) {
+        for (int i = 0; i < length; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
+    public static void printMessageLine(String msg, int leftSpacing, int rightSpacing) {
+        printSpaces(leftSpacing);
+        System.out.print("*** " + msg + " ***");
+        printSpaces(rightSpacing);
+        System.out.println();
+    }
+
+    public static void printSpaces(int length) {
+        for (int i = 0; i < length; i++) {
+            System.out.print(" ");
+        }
+    }
 }
